@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Reservation</title>
+    <link rel="stylesheet" href="/static/css/reservation.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <h1 class="navbar-title">Restaurant Name</h1>
+        </div>
+        <ul class="navbar-nav">
+            <li class="navbar-item"><a href="#" class="navbar-link">Home</a></li>
+            <li class="navbar-item"><a href="#" class="navbar-link">Menu</a></li>
+            <li class="navbar-item"><a href="#" class="navbar-link">Reservation</a></li>
+            <li class="navbar-item"><a href="#" class="navbar-link">Contact</a></li>
+        </ul>
+    </nav>
+
+
+
+    <main class="content" role="main">
+        <div class="reservation-form-container">
+            <form method="post"  id="reservation-form" class="reservation-form">
+                {% csrf_token %}
+                <fieldset>
+                    <legend>Reservation Information</legend>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="phone">Phone no.:</label>
+                    <input type="tel" id="phone" name="phone" required>
+
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" required>
+
+
+                    <label for="time">Time:</label>
+                    <br>
+                    <br>
+                    <label for="start_time">From: </label>
+                    <input id="start_time" type="time" name="start_time" value="13:30" />
+                    
+                    <label for="end_time">To: </label>
+                    <input id="end_time" type="time" name="end_time" value="13:30" />
+
+                    <label for="people">No. of people:</label>
+                    <input type="number" id="people" name="people" min="1" max="10" required>
+
+                    <label for="needs">Comments:</label>
+                    <textarea id="needs" name="needs" required></textarea>
+
+                    <div class="payment">
+                        <h3>Payment:</h3>
+                        <div class="payment-options">
+
+                            <label>
+                                <input type="radio" name="payment-option" value="Esewa" required>
+                                Esewa
+                                <!-- <img src="Esewa_logo.webp" alt="Esewa"> -->
+                            </label>
+                            <label>
+                                <input type="radio" name="payment-option" value="fonepay" required>
+                                fonepay
+                            </label>
+                            <label>
+                                <input type="radio" name="payment-option" value="Khalti" required>
+                                Khalti
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="reserve">Reserve</button>
+                    <button type="reset">Reset</button>
+                </fieldset>
+                {% csrf_token %}
+            </form>
+        </div>
+
+        <div class="history-container">
+            <section class="history" id="history">
+                <h2 class="section-title">History</h2>
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone Number</th>
+                            <th>Date</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Number of People</th>
+                            <th>Comments</th>
+                            <th>Payment</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Add rows for each reservation history entry -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+
+
+
+
+    <footer class="footer">
+        <p>&copy; Restaurant Name. All Rights Reserved.</p>
+    </footer>
+
+    <script src="/static/js/reservation.js"></script>
+
+
+
+</body>
+
+</html>
